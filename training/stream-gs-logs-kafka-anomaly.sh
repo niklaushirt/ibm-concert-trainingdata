@@ -27,7 +27,7 @@ export LOG_TYPE=lags
 export INDEX_TYPE=lags-anomaly
 export DATE_FORMAT_LOGS="+%Y-%m-%dT%H:%M:%S.000000+00:00"
 
-cd /ibm-aiops-trainingdata
+cd /ibm-concert-trainingdata
 
 echo "   "
 echo "   "

@@ -26,7 +26,7 @@ echo "**************************************************************************
 export LOG_TYPE=lags   
 export INDEX_TYPE=lags-training
 
-cd /ibm-aiops-trainingdata
+cd /ibm-concert-trainingdata
 
 echo "   "
 echo "   "
