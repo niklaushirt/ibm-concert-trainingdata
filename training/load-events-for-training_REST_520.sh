@@ -15,7 +15,7 @@
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 echo " ------------------------------------------------------------------------------------------------------------------------------"
-echo " 🚀 Starting Load (>=4.1)"
+echo " 🚀 Starting Load (>=5.2)"
 echo " ------------------------------------------------------------------------------------------------------------------------------"
 echo "  "
 echo "  "
@@ -36,15 +36,6 @@ oc project $AIOPS_NAMESPACE  >/tmp/demo.log
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 echo "   🔎  Get REST Authentication"	
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-export USER_PASS="$(oc get secret aiops-ir-core-ncodl-api-secret -o jsonpath='{.data.username}' | base64 --decode):$(oc get secret -n $AIOPS_NAMESPACE aiops-ir-core-ncodl-api-secret -o jsonpath='{.data.password}' | base64 --decode)"
-sleep 2
-export DATALAYER_ROUTE=$(oc get route  -n $AIOPS_NAMESPACE datalayer-api  -o jsonpath='{.status.ingress[0].host}')
-
-echo "USER_PASS:$USER_PASS"
-echo "DATALAYER_ROUTE:$DATALAYER_ROUTE"
-
-
-
 
 
 export AIOPS_NAMESPACE=$(oc get po -A|grep aiops-orchestrator-controller |awk '{print$1}')
@@ -60,16 +51,6 @@ export ZEN_TOKEN=$(curl -k -XGET https://$ZEN_API_HOST/v1/preauth/validateAuth \
 echo $ZEN_TOKEN
 
 export ROUTE=$(oc get route -n $AIOPS_NAMESPACE cpd -o jsonpath={.spec.host})
-
-
-    export views=$(curl -k -X GET  --header 'Accept: application/json' -H "Authorization: Bearer ${ZEN_TOKEN}" https://$CPD_ROUTE/aiops/api/v2/configuration/views -H "accept: application/json" -H "Content-Type: application/json" -H "X-TenantID: cfd95b7e-3bc7-4006-a4a8-a73a79c71255" )
-    export viewID=$(echo $views|jq -r -c '.views[]| select( .name == "DEMO Incidents View")|.id')
-    echo $viewID
-
-
-    export payload="{\"value\": { \"rowColorToggle\": true, \"ael_user_properties_refresh_time\": 60, \"defaultView\": \"$viewID\", \"defaultIncidentAlertView\": \"$viewID\"}}"
-    echo $payload   
-
 
 
 
@@ -94,9 +75,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -125,9 +104,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -156,9 +133,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -186,9 +161,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -218,9 +191,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -249,9 +220,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -280,9 +249,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -314,9 +281,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -344,9 +309,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -374,9 +337,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -405,9 +366,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      #echo $result
-      myId=$(echo $result|jq ".deduplicationKey")
-      echo "              DONE:$myId"
+      echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
