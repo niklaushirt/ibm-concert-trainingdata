@@ -57,7 +57,7 @@ spec:
               echo ""
 
               # Use the REST API to load the events as of 5.2
-              ./training/load-events-for-training_REST.sh
+              ./training/load-events-for-training_REST_520.sh
 
               echo "*****************************************************************************************************************************"
               echo " ✅ DONE"

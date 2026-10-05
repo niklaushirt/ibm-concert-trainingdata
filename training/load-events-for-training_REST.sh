@@ -50,7 +50,7 @@ echo "   -----------------------------------------------------------------------
 echo "   🚀 Update Training Data Today"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 cp ./training-data/latest/events-rest/events-training-rest.json /tmp/events-training-rest.json
-export current_date=$(date --date='-1 day' +'%Y-%m-%d')
+export current_date=$(date --date='-5 day' +'%Y-%m-%d')
 echo "      🕰️ For Date: $current_date"
 sed -i "s/2026-01-01/$current_date/g" /tmp/events-training-rest.json
 head -n 3 /tmp/events-training-rest.json
