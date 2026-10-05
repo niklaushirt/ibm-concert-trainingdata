@@ -1,0 +1,76 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: load-events-rest
+  namespace: ibm-installer
+spec:
+  serviceAccountName: demo-admin
+  template:
+    spec:
+      containers:
+        - name: load
+          image: quay.io/niklaushirt/ibm-aiops-tools:2.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "150m"
+            limits:
+              memory: "2024Mi"
+              cpu: "1200m"
+          command:
+            - /bin/sh
+            - -c
+            - |
+              #!/bin/bash
+              #set -x
+              
+              echo "*****************************************************************************************************************************"
+              echo " ✅ STARTING: Load events anomaly training files"
+              echo "*****************************************************************************************************************************"
+
+              echo "   ------------------------------------------------------------------------------------------------------------------------------"
+              echo "    📥 Downloading events anomaly training files"
+              echo "   ------------------------------------------------------------------------------------------------------------------------------"
+              export TRAINING_REPO=https://github.com/niklaushirt/ibm-aiops-trainingdata.git
+              git clone $TRAINING_REPO
+              cd ibm-aiops-trainingdata
+
+              echo ""
+              echo ""
+              echo "------------------------------------------------------------------------------------------------------------------------------"
+              echo "   🔎 This Repo includes those latestet Commits"
+              git log|head -n 17
+              echo ""
+              echo ""
+              
+              echo "   ------------------------------------------------------------------------------------------------------------------------------"
+              echo "    🚀 Starting Data Load"
+              echo "   ------------------------------------------------------------------------------------------------------------------------------"
+              cd ibm-aiops-trainingdata
+              echo "------------------------------------------------------------------------------------------------------------------------------"
+              echo "This Repo includes those latestet Commits"
+              echo "------------------------------------------------------------------------------------------------------------------------------"
+              git log|head -n 17
+              echo ""
+              echo ""
+
+              # Use the REST API to load the events as of 5.2
+              ./training/load-events-for-training_REST.sh
+
+              echo "*****************************************************************************************************************************"
+              echo " ✅ DONE"
+              echo "*****************************************************************************************************************************"
+              while true
+              do
+                sleep 1000
+              done
+          env:
+            - name: INDEX_OVERWRITE
+              value : "true"
+            - name: VERSION
+              value : "latest"
+      restartPolicy: Never
+
+  backoffLimit: 500
