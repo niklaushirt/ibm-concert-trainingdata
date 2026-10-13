@@ -264,7 +264,7 @@ echo " "
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 echo "   🚀 Update Training Data 1 Month ago"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-cp ./training-data/latest/events-rest/events-training-rest.json /tmp/events-training-rest.json
+cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-1 month' +'%Y-%m-%d')
 echo "      🕰️ For Date: $current_date"
 sed -i "s/2026-01-01/$current_date/g" /tmp/events-training-rest.json
@@ -292,7 +292,7 @@ echo " "
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 echo "   🚀 Update Training Data 2 Month ago"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-cp ./training-data/latest/events-rest/events-training-rest.json /tmp/events-training-rest.json
+cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-2 month' +'%Y-%m-%d')
 echo "      🕰️ For Date: $current_date"
 sed -i "s/2026-01-01/$current_date/g" /tmp/events-training-rest.json
@@ -320,7 +320,7 @@ echo " "
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 echo "   🚀 Update Training Data 3 Month ago"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-cp ./training-data/latest/events-rest/events-training-rest.json /tmp/events-training-rest.json
+cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-3 month' +'%Y-%m-%d')
 echo "      🕰️ For Date: $current_date"
 sed -i "s/2026-01-01/$current_date/g" /tmp/events-training-rest.json
@@ -349,7 +349,7 @@ echo " "
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 echo "   🚀 Update Training Data 4 Month ago"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-cp ./training-data/latest/events-rest/events-training-rest.json /tmp/events-training-rest.json
+cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-4 month' +'%Y-%m-%d')
 echo "      🕰️ For Date: $current_date"
 sed -i "s/2026-01-01/$current_date/g" /tmp/events-training-rest.json
