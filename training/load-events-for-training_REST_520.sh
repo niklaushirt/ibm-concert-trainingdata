@@ -15,7 +15,7 @@
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 echo " ------------------------------------------------------------------------------------------------------------------------------"
-echo " 🚀 Starting Load (>=5.2)"
+echo " 🚀 Starting Load (>=5.2.0)"
 echo " ------------------------------------------------------------------------------------------------------------------------------"
 echo "  "
 echo "  "
@@ -34,7 +34,7 @@ oc project $AIOPS_NAMESPACE  >/tmp/demo.log
 
 
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-echo "   🔎  Get REST Authentication"	
+echo "   🔎  Get ZEN Authentication"	
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 
 
@@ -56,7 +56,7 @@ export ROUTE=$(oc get route -n $AIOPS_NAMESPACE cpd -o jsonpath={.spec.host})
 
 
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-echo "   🚀 Update Training Data Today"
+echo "   🚀 Update Training Data -1 day"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-1 day' +'%Y-%m-%d')
@@ -75,7 +75,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -85,7 +85,7 @@ echo " "
 
 
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-echo "   🚀 Update Training Data Today"
+echo "   🚀 Update Training Data -2 day"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-2 day' +'%Y-%m-%d')
@@ -104,7 +104,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -114,7 +114,7 @@ echo " "
 
 
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-echo "   🚀 Update Training Data Today"
+echo "   🚀 Update Training Data -3 day"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-3 day' +'%Y-%m-%d')
@@ -133,7 +133,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -142,7 +142,7 @@ echo " "
 
 
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-echo "   🚀 Update Training Data Today"
+echo "   🚀 Update Training Data -4 days"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-4 day' +'%Y-%m-%d')
@@ -161,7 +161,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -172,7 +172,7 @@ echo " "
 
 
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-echo "   🚀 Update Training Data Today"
+echo "   🚀 Update Training Data -5 days"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-5 day' +'%Y-%m-%d')
@@ -191,7 +191,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -201,7 +201,7 @@ echo " "
 
 
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-echo "   🚀 Update Training Data Today"
+echo "   🚀 Update Training Data -6 days"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-6 day' +'%Y-%m-%d')
@@ -220,7 +220,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -230,7 +230,7 @@ echo " "
 
 
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
-echo "   🚀 Update Training Data Today"
+echo "   🚀 Update Training Data -7 days"
 echo "   ------------------------------------------------------------------------------------------------------------------------------"
 cp ./training-data/latest/events-rest/events-training-rest-520.json /tmp/events-training-rest.json
 export current_date=$(date --date='-7day' +'%Y-%m-%d')
@@ -249,7 +249,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -281,7 +281,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -309,7 +309,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -337,7 +337,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
@@ -366,7 +366,7 @@ do
       #echo ""
       export result=$(eval $c_string)
       #export result=$(curl "https://$DATALAYER_ROUTE/irdatalayer.aiops.io/active/v1/events" --insecure --silent -X POST -u "${USER_PASS}" -H 'Content-Type: application/json' -H "x-username:admin" -H "x-subscription-id:cfd95b7e-3bc7-4006-a4a8-a73a79c71255" -d "${line}")
-      echo $result
+      #echo $result
 
 done < "/tmp/events-training-rest.json"
 echo "              ✅ OK"
