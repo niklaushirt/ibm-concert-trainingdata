@@ -479,6 +479,28 @@ echo " "
 
 
 
+echo "   ------------------------------------------------------------------------------------------------------------------------------"
+echo "   ⏲️ Waiting 1 minute"
+echo "   ------------------------------------------------------------------------------------------------------------------------------"
+sleep 60
+
+
+
+
+echo "   ------------------------------------------------------------------------------------------------------------------------------"
+echo "   🚀 Closing Alerts to ensure proper training"
+echo "   ------------------------------------------------------------------------------------------------------------------------------"
+F="/ibm-concert-trainingdata/training-data/latest/events-rest/events-training-rest-520.json"
+
+for r in $(jq -r '.resource.name' "$F" | sort -u); do
+      q=$(jq -rn --arg f "resource.name = '$r' and state != 'closed'" '$f|@uri')
+      echo ""
+      echo $r
+      #curl -sk -o /dev/null -X PATCH "${H[@]}" "$API/alerts?filter=$q" -d '{"state":"closed"}'
+      curl -X PATCH "https://$ROUTE/aiops/api/v2/alerts?filter=$q" --insecure -s -H 'accept: application/json' -H 'x-tenant-id: cfd95b7e-3bc7-4006-a4a8-a73a79c71255' -H "Authorization: Bearer ${ZEN_TOKEN}" -H 'Content-Type: application/json' -d '{"state":"closed"}'
+done
+
+
 
 
 
